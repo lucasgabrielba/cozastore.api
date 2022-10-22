@@ -4,14 +4,16 @@ const AppError = require("../utils/AppError");
 class HomeController {
   async index(req, res) {
     try {
-      pool.query(`SELECT * FROM products WHERE pilot = true`, (error, response) => {
-          if(error){
-            throw new AppError(error, 401)
+      pool.query(
+        `SELECT * FROM products WHERE pilot = true`,
+        (error, response) => {
+          if (error) {
+            throw new AppError(error, 401);
           } else {
-            const products = response.rows
+            const products = response.rows;
             res.json({
               products,
-            })
+            });
           }
         }
       );
