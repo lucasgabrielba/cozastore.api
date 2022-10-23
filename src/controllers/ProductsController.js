@@ -81,6 +81,26 @@ class ProductsController {
       res.status(500).json({ error });
     }
   }
+
+  async findbyCategory(req, res) {
+    const color = req.query["category"];
+    const { slug } = req.params;
+
+    try {
+      pool.query(
+        `SELECT * FROM products WHERE category = '${category}'`,
+        (error, response) => {
+          if (error) {
+            throw new AppError(error, 401);
+          } else {
+            res.json(response.rows);
+          }
+        }
+      );
+    } catch (error) {
+      res.status(500).json({ error });
+    }
+  }
 }
 
 module.exports = ProductsController;

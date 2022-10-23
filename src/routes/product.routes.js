@@ -8,5 +8,6 @@ productsRoutes.get("/", productsController.index);
 productsRoutes.get("/:slug", productsController.show);
 productsRoutes.get("/:slug/p", productsController.findbyColor);
 productsRoutes.get("/:slug/s", productsController.findbySize);
+productsRoutes.get("/c", productsController.findbyCategory);
 
 module.exports = productsRoutes;
