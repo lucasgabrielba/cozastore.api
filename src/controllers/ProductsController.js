@@ -87,7 +87,7 @@ class ProductsController {
 
     try {
       pool.query(
-        `SELECT * FROM products WHERE category = '${category}'`,
+        `SELECT * FROM products WHERE category = '${category}' and pilot = true`,
         (error, response) => {
           if (error) {
             throw new AppError(error, 401);
