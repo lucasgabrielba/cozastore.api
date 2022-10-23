@@ -83,7 +83,7 @@ class ProductsController {
   }
 
   async findbyCategory(req, res) {
-    const color = req.query["category"];
+    const category = req.query["category"];
     const { slug } = req.params;
 
     try {
