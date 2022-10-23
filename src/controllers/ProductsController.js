@@ -62,6 +62,25 @@ class ProductsController {
       res.status(500).json({ error });
     }
   }
+
+  async findbySize(req, res) {
+    const { slug } = req.params;
+
+    try {
+      pool.query(
+        `SELECT * FROM products WHERE slug = '${slug}' AND size = 'P'`,
+        (error, response) => {
+          if (error) {
+            throw new AppError(error, 401);
+          } else {
+            res.json(response.rows);
+          }
+        }
+      );
+    } catch (error) {
+      res.status(500).json({ error });
+    }
+  }
 }
 
 module.exports = ProductsController;
