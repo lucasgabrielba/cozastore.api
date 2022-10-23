@@ -83,8 +83,7 @@ class ProductsController {
   }
 
   async findbyCategory(req, res) {
-    const category = req.query["category"];
-    const { slug } = req.params;
+    const category = req.params.category;
 
     try {
       pool.query(
